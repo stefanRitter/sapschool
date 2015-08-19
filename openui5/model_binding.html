@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>Hello OpenUI5 model binding</title>
+
+  <script
+    id="sap-ui-bootstrap"
+    src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_bluecrystal"
+    data-sap-ui-libs="sap.ui.commons,sap.ui.ux3"
+    type="text/javascript">
+  </script>
+
+  <script type="text/javascript">
+    // JSON sample data
+    var data = {info: 'John Doe, aged 35'};
+
+    // create JSONModel instance
+    var oJsonModel = new sap.ui.model.json.JSONModel();
+
+    // set data
+    oJsonModel.setData(data);
+
+    // bind model
+    sap.ui.getCore().setModel(oJsonModel);
+
+    // bind to globalmodel.info
+    var oText = new sap.ui.commons.TextField({
+      value: "{/info}"
+    });
+
+    // place text
+    oText.placeAt('content');
+  </script>
+
+</head>
+<body class="sapUiBody">
+  <div id="content"></div>
+</body>
+</html>

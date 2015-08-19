@@ -1,0 +1,44 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>Hello OpenUI5</title>
+
+  <script
+    id="sap-ui-bootstrap"
+    src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_bluecrystal"
+    data-sap-ui-libs="sap.ui.commons,sap.ui.ux3"
+    type="text/javascript">
+  </script>
+
+  <script type="text/javascript">
+    // model with multiple data entries
+    var oModel = new sap.ui.model.json.JSONModel();
+    oModel.setJSON('{"selection":"All Kinds", "data": [ {"text": "Cucumber"}, {"text": "Potatoes"}, {"text": "Beets"} ]}');
+
+    // a template item
+    var oItemTemplate = new sap.ui.core.ListItem('name', {
+      text: '{text}'
+    });
+
+    // bind values of a control
+    var oComboBox = new sap.ui.commons.ComboBox('combobox1', {
+      items: {
+        path: "/data",
+        template: oItemTemplate
+      }
+    });
+
+    // set model to control
+    oComboBox.setModel(oModel);
+    oComboBox.bindValue('/selection');
+
+    // place
+    oComboBox.placeAt('content')
+  </script>
+
+</head>
+<body class="sapUiBody">
+  <div id="content"></div>
+</body>
+</html>

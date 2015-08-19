@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>Hello OpenUI5</title>
+
+  <script
+    id="sap-ui-bootstrap"
+    src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_bluecrystal"
+    data-sap-ui-libs="sap.ui.commons,sap.ui.ux3"
+    type="text/javascript">
+  </script>
+
+  <script type="text/javascript">
+    var btn1 = new sap.ui.commons.Button("headerButton", {text: "Hello UI area called header"});
+    btn1.placeAt('header');
+    var btn2 = new sap.ui.commons.Button("contentButton", {text: "Hello UI area called content"});
+    btn2.placeAt('content');
+    var btn3 = new sap.ui.commons.Button("footerButton", {text: "Hello UI area called footer"});
+    btn3.placeAt('footer');
+  </script>
+
+</head>
+<body class="sapUiBody">
+  <div id="header"></div>
+  <div id="content"></div>
+  <div id="footer"></div>
+</body>
+</html>

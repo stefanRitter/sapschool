@@ -1,0 +1,62 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>Hello OpenUI5 mobile</title>
+
+  <script
+    id="sap-ui-bootstrap"
+    src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_bluecrystal"
+    data-sap-ui-libs="sap.ui.commons,sap.ui.ux3,sap.m"
+    type="text/javascript">
+  </script>
+
+  <script type="text/javascript">
+    // initalize the SAP app
+    var app = new sap.m.App('myApp', {});
+
+    // create text input
+    var oText1 = new sap.m.Input({value: '', placeholder: 'Enter first name'});
+    var oText2 = new sap.m.Input({value: '', placeholder: 'Enter last name'});
+
+
+    // create first page
+    var page1 = new sap.m.Page('page1', {
+      title: 'First Page',
+      content: [
+        new sap.m.Label({text: 'First Name'}),
+        oText1,
+        new sap.m.Label({text: 'Last Name'}),
+        oText2,
+        new sap.m.Button({
+          text: 'Submit',
+          tap: function () {
+            sap.ui.getCore().byId('label1').setText('Hello, '+oText1.getValue()+' '+oText2.getValue())
+            app.to('page2');
+          }
+        })
+      ]
+    });
+
+    // create second page
+    var page2 = new sap.m.Page('page2', {
+      title: 'Second Page',
+      content: [
+        new sap.m.Label('label1',{width: '100%'}),
+        new sap.m.Button({
+          text: 'back 2 page 1',
+          tap: function () { app.to('page1') }
+        })
+      ]
+    });
+
+    app.addPage(page1);
+    app.addPage(page2);
+    app.placeAt('content')
+  </script>
+
+</head>
+<body class="sapUiBody">
+  <div id="content"></div>
+</body>
+</html>
